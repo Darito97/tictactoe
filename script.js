@@ -17,8 +17,7 @@ const Juego = (() => {
       if (_matrizDeJuego[0][0] === "X") {
         return [true, _NombreDelJugador1];
       } else {
-        if(_matrizDeJuego[0][0]!== "")
-          return [true, _NombreDelJugador2];
+        if (_matrizDeJuego[0][0] !== "") return [true, _NombreDelJugador2];
       }
     } else if (
       _matrizDeJuego[0][2] === _matrizDeJuego[1][1] &&
@@ -27,8 +26,7 @@ const Juego = (() => {
       if (_matrizDeJuego[0][2] === "X") {
         return [true, _NombreDelJugador1];
       } else {
-        if(_matrizDeJuego[0][2]!== "")
-          return [true, _NombreDelJugador2];
+        if (_matrizDeJuego[0][2] !== "") return [true, _NombreDelJugador2];
       }
     } else {
       for (let cont = 0; cont < 3; cont++) {
@@ -70,60 +68,23 @@ const Juego = (() => {
     _matrizDeJuego = matriz;
   };
   return {
-    AsignarMatriz,
     ReiniciarJuego,
     SeleccionarPosicion,
     AsignarNombresDeJugadores,
-    RevisionDeGanador
   };
 })();
-Juego.AsignarNombresDeJugadores("Jugador1", "Jugador2");
-matrizDeJuegoDePrueba = [
-  ["O", "X", "X"],
-  ["O", "O", "O"],
-  ["O", "X", "X"],
-];
-Juego.AsignarMatriz(matrizDeJuegoDePrueba);
-console.log(Juego.RevisionDeGanador())
-matrizDeJuegoDePrueba = [
-  ["O", "O", "O"],
-  ["O", "X", "X"],
-  ["X", "O", "X"],
-];
-Juego.AsignarMatriz(matrizDeJuegoDePrueba);
-console.log(Juego.RevisionDeGanador())
-matrizDeJuegoDePrueba = [
-  ["", "", ""],
-  ["", "", ""],
-  ["", "", ""],
-];
-Juego.AsignarMatriz(matrizDeJuegoDePrueba);
-console.log(Juego.RevisionDeGanador())
-matrizDeJuegoDePrueba = [
-  ["X", "O", "O"],
-  ["O", "O", "X"],
-  ["O", "O", "X"],
-];
-Juego.AsignarMatriz(matrizDeJuegoDePrueba);
-console.log(Juego.RevisionDeGanador())
-matrizDeJuegoDePrueba = [
-  ["O", "O", "X"],
-  ["O", "X", "X"],
-  ["X", "X", "O"],
-];
-Juego.AsignarMatriz(matrizDeJuegoDePrueba);
-console.log(Juego.RevisionDeGanador())
-matrizDeJuegoDePrueba = [
-  ["O", "O", "X"],
-  ["O", "X", "X"],
-  ["X", "O", "O"],
-];
-Juego.AsignarMatriz(matrizDeJuegoDePrueba);
-console.log(Juego.RevisionDeGanador())
-matrizDeJuegoDePrueba = [
-  ["O", "O", "X"],
-  ["O", "X", "X"],
-  ["O", "X", "X"],
-];
-Juego.AsignarMatriz(matrizDeJuegoDePrueba);
-console.log(Juego.RevisionDeGanador())
+
+const Jugador = (nombre) => {
+  const nombre = nombre;
+  let _partidasDeGanadas = 0;
+  const AgregarPartidaGanada = () => {
+    partidasDeGanadas++;
+  };
+  const ObtenerNumeroDePartidasGanadas = () => partidasDeGanadas;
+  return {
+    nombre,
+    AgregarPartidaGanada,
+    ObtenerNumeroDePartidasGanadas
+  }
+};
+
