@@ -1,0 +1,197 @@
+:root {
+  --color-principal: #2b303a;
+  --color-secundario: #f3fcf0;
+  --color-terciario: #c2cac0;
+}
+@keyframes aparecerDesdeElFondo {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes aparecerYDesaparecerDesdeElFondo {
+  0%{
+    opacity: 0;
+  }
+  25%{
+    opacity: 1;
+  }
+  75%{
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+  }
+}
+body {
+  margin: 0;
+
+  font-family: "Courier New", Courier, monospace;
+
+  background-color: var(--color-principal);
+}
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px;
+
+  background-color: var(--color-principal);
+  color: var(--color-secundario);
+
+  animation: aparecerDesdeElFondo 0.3s ease-out;
+}
+.header__bienvenida {
+  text-align: center;
+}
+.bienvenida__subtitulo {
+  font-size: 20px;
+  color: var(--color-terciario);
+}
+.bienvenida__titulo {
+  font-size: 36px;
+}
+.header__formulario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+.formulario__grupo-de-input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.grupo-de-Input__label {
+  font-size: 14px;
+  font-weight: 600;
+}
+.grupo-de-Input__input {
+  width: 100%;
+  max-width: 300px;
+  padding: 7px 9px;
+
+  border-color: transparent;
+  border-radius: 16px;
+  font-size: 15px;
+  text-align: center;
+}
+.formulario__boton-submit {
+  width: 200px;
+  padding: 7px 9px;
+
+  background-color: var(--color-secundario);
+  border-color: transparent;
+  border-radius: 16px;
+  color: var(--color-principal);
+  font-size: 16px;
+  font-weight: 600;
+}
+.seccion-de-juego {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 100vh;
+  width: 100vw;
+
+  padding: 15px;
+  box-sizing: border-box;
+
+  background-color: var(--color-principal);
+  color: var(--color-secundario);
+
+  animation: aparecerDesdeElFondo 0.3s ease-out;
+}
+.seccion-de-juego__puntuacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+.puntuacion__jugador {
+  text-align: center;
+}
+.jugador__nombre {
+  font-size: 20px;
+}
+.jugador__puntuacion {
+  font-size: 48px;
+}
+.seccion-del-juego__juego {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 5px;
+
+  width: 250px;
+
+  background-color: var(--color-secundario);
+}
+.juego__campo-de-juego {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 80px;
+  width: 80px;
+
+  background-color: var(--color-principal);
+  border: var(--color-principal) 1px solid;
+  font-size: 36px;
+  text-align: center;
+}
+.seccion-del-juego__boton-de-juego{
+  width: 100%;
+  max-width: 200px;
+
+  padding: 7px 9px;
+
+  background-color: var(--color-secundario);
+  border-color: transparent;
+  border-radius: 16px;
+  color: var(--color-principal);
+  font-size: 16px;
+  font-weight: 600;
+}
+.notificacion{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 10px;
+  z-index: 2;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+.notificacion__texto{
+  min-width: 200px;
+
+  padding: 7px 9px;
+
+  background-color: var(--color-secundario);
+  border-radius: 16px;
+  text-align: center;
+
+  animation: aparecerYDesaparecerDesdeElFondo 2s linear;
+}

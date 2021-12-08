@@ -61,30 +61,107 @@ const Juego = (() => {
       return ganador;
     }
   };
+  const ObtenerMatrizDeJuego = ()=>{
+    return _matrizDeJuego
+  }
   const ReiniciarJuego = () => {
     _matrizDeJuego = _matrizDeJuegoInicial;
-  };
-  const AsignarMatriz = (matriz) => {
-    _matrizDeJuego = matriz;
   };
   return {
     ReiniciarJuego,
     SeleccionarPosicion,
     AsignarNombresDeJugadores,
+    ObtenerMatrizDeJuego
   };
 })();
 
-const Jugador = (nombre) => {
-  const nombre = nombre;
+const Jugador = (nombreDelJugador) => {
+  const nombre = nombreDelJugador;
   let _partidasDeGanadas = 0;
   const AgregarPartidaGanada = () => {
-    partidasDeGanadas++;
+    _partidasDeGanadas++;
   };
-  const ObtenerNumeroDePartidasGanadas = () => partidasDeGanadas;
+  const ObtenerNumeroDePartidasGanadas = () => _partidasDeGanadas;
   return {
     nombre,
     AgregarPartidaGanada,
-    ObtenerNumeroDePartidasGanadas
-  }
+    ObtenerNumeroDePartidasGanadas,
+  };
 };
+function MostrarNotificacion(texto) {
+  const notificacion = document.getElementById("notificacion");
+  notificacion.style = "display: flex;";
+  const textoDeNotificacion = document.getElementById("textoDeNotificacion");
+  textoDeNotificacion.innerText = texto;
+  setTimeout(() => {
+    notificacion.style = "";
+  }, 1990);
+}
+function DesaparecerSeccionYAparecerSeccion(
+  selectorDeSeccionADesaparecer,
+  selectorDeSeccionAAparecer
+) {
+  const seccionADesaparecer = document.querySelector(selectorDeSeccionADesaparecer)
+  const seccionAAparecer = document.querySelector(selectorDeSeccionAAparecer)
+  seccionADesaparecer.style = 'display: none;'
+  seccionAAparecer.style = 'display: flex;'
+}
+const botonSubmit = document.getElementById("botonSubmit");
+botonSubmit.addEventListener("click", (e) => {
+  e.preventDefault();
+  const nombreDelJugador1 = document.getElementById("nombreDelJugador1");
+  const nombreDelJugador2 = document.getElementById("nombreDelJugador2");
+  const ValidarNombres = (nombre1, nombre2) => {
+    if (nombre1 !== "" && nombre2 !== "") {
+      return true;
+    }
+    return false;
+  };
+  if (ValidarNombres(nombreDelJugador1.value, nombreDelJugador2.value)) {
+    
+    DesaparecerSeccionYAparecerSeccion('header', '.seccion-de-juego')
+    Juego.AsignarNombresDeJugadores(nombreDelJugador1.value, nombreDelJugador2.value);
 
+    const nombreDelJug1 = document.getElementById('nombreDelJug1')
+    const nombreDelJug2 = document.getElementById('nombreDelJug2')
+    nombreDelJug1.innerText = nombreDelJugador1.value
+    nombreDelJug2.innerText = nombreDelJugador2.value
+
+    nombreDelJugador1.value = ''
+    nombreDelJugador2.value = ''
+    
+  } else {
+    MostrarNotificacion("Ingresa los dos nombres");
+  }
+});
+const botonDeReinicioDeJuego = document.querySelector('.seccion-del-juego__boton-de-juego')
+botonDeReinicioDeJuego.addEventListener('click', e=>{
+  DesaparecerSeccionYAparecerSeccion('.seccion-de-juego', 'header')
+})
+
+function Jugada(numeroDeCampo){
+  let posicionY = 0
+  let posicionX = numeroDeCampo
+  if(numero < 5){
+    posicionY = 2
+    posicionX = numeroDeCampo - 5
+  }
+  else if(numero < 2){
+    posicionY = 1
+    posicionX = numeroDeCampo - 2
+  }
+  SeleccionarPosicion(posicionX, posicionY)
+}
+
+const matrizDeCamposDeJuego = document.querySelectorAll('.juego__campo-de-juego')
+
+function ActualizarJuego(){
+  let matrizDeJuego = ObtenerMatrizDeJuego()
+  
+}
+
+for(let contador = 0; contador<matrizDeCamposDeJuego.length; contador++){
+  matrizDeCamposDeJuego[contador].addEventListener('click', e=>{
+    console.log(e.path[0].id)
+  })
+}

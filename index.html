@@ -1,14 +1,77 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tic Tac Toe</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  
-  <script src="./script.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__bienvenida">
+        <p class="bienvenida__subtitulo">Bienvenido a el maravilloso juego</p>
+        <h1 class="bienvenida__titulo">Tic Tac Toe</h1>
+      </div>
+      <form class="header__formulario">
+        <div class="formulario__grupo-de-input">
+          <label class="grupo-de-Input__label" for="nombreDelJugador1">
+            Nombre del jugador 1
+          </label>
+          <input
+            class="grupo-de-Input__input"
+            id="nombreDelJugador1"
+            type="text"
+            name="nombreDelJugador1"
+            placeholder="Ingresa el nombre del jugador 1"
+          />
+        </div>
+        <div class="formulario__grupo-de-input">
+          <label class="grupo-de-Input__label" for="nombreDelJugador1">
+            Nombre del jugador 2
+          </label>
+          <input
+            class="grupo-de-Input__input"
+            id="nombreDelJugador2"
+            type="text"
+            name="nombreDelJugador2"
+            placeholder="Ingresa el nombre del jugador 2"
+          />
+        </div>
+        <button class="formulario__boton-submit" id="botonSubmit" type="submit">
+          Comenzar a jugar
+        </button>
+      </form>
+    </header>
+    <main class="seccion-de-juego">
+      <section class="seccion-de-juego__puntuacion">
+        <div class="puntuacion__jugador">
+          <p class="jugador__nombre" id="nombreDelJug1">Jugador 1</p>
+          <p class="jugador__puntuacion" id="puntuacionDelJugador1">0</p>
+        </div>
+        <div class="puntuacion__jugador">
+          <p class="jugador__nombre" id="nombreDelJug2">Jugador 2</p>
+          <p class="jugador__puntuacion" id="puntuacionDelJugador2">0</p>
+        </div>
+      </section>
+      <section class="seccion-del-juego__juego">
+        <div class="juego__campo-de-juego" id="0"></div>
+        <div class="juego__campo-de-juego" id="1"></div>
+        <div class="juego__campo-de-juego" id="2"></div>
+        <div class="juego__campo-de-juego" id="3"></div>
+        <div class="juego__campo-de-juego" id="4"></div>
+        <div class="juego__campo-de-juego" id="5"></div>
+        <div class="juego__campo-de-juego" id="6"></div>
+        <div class="juego__campo-de-juego" id="7"></div>
+        <div class="juego__campo-de-juego" id="8"></div>
+      </section>
+      <button class="seccion-del-juego__boton-de-juego">
+        Reiniciar juego
+      </button>
+    </main>
+    <div class="notificacion" id="notificacion">
+      <p class="notificacion__texto" id="textoDeNotificacion">dwas</p>
+    </div>
+    <script src="./script.js"></script>
+  </body>
 </html>
